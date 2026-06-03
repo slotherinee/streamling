@@ -1,23 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClient } from 'prisma/generated/prisma/client.js';
+import { PrismaClient } from '@prisma/generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PrismaService extends PrismaClient {
-  constructor() {
-    const connectionString = process.env.DATABASE_URL;
-
-    if (
-      typeof connectionString !== 'string' ||
-      connectionString.trim() === ''
-    ) {
-      throw new Error(
-        'DATABASE_URL is missing or invalid. Make sure .env is loaded before Prisma initializes.',
-      );
-    }
-
+  constructor(private readonly configService: ConfigService) {
     const adapter = new PrismaPg({
-      connectionString,
+      connectionString: configService.getOrThrow<string>(
+        'DATABASE.DATABASE_URL',
+      ),
     });
     super({ adapter });
   }

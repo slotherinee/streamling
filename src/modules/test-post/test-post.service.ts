@@ -1,4 +1,4 @@
-import { PrismaService } from '../../infra/database/prisma.service.js';
+import { PrismaService } from '@infra/database/prisma.service';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -10,19 +10,11 @@ export class TestPostService {
   }
 
   async create() {
-    const createTestUser = {
-      email: 'test@example.com',
-      name: 'Test User',
-    };
-    await this.prismaService.user.create({
-      data: createTestUser,
-    });
-
     const testPostData = {
-      title: 'Test Post',
+      title: 'Test Post 2',
       authorId: 1,
-      content: 'This is a test post created by TestPostService.',
-      published: false,
+      content: 'This is a test post created by TestPostService. 2222',
+      published: true,
     };
     await this.prismaService.post.create({
       data: testPostData,
