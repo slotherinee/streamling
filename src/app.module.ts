@@ -3,6 +3,7 @@ import { PrismaModule } from '@infra/database/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { HealthModule } from './modules/health/health.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
 import configuration from '@infra/config/configuration';
 import { AppLoggerModule } from '@infra/logger/logger.module';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
@@ -17,6 +18,7 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
     PrismaModule,
     HealthModule,
     AuthModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [
