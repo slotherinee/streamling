@@ -45,7 +45,7 @@ export const loggerModuleAsyncParams: LoggerModuleAsyncParams = {
   imports: [ConfigModule],
   inject: [ConfigService],
   useFactory: (config: ConfigService) => {
-    const isDev = config.get('NODE_ENV') !== 'production';
+    const isDev = config.getOrThrow('NODE_ENV') !== 'production';
 
     return {
       pinoHttp: {
