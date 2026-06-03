@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { PrismaModule } from '@infra/database/prisma.module';
+import { AppCacheModule } from '@infra/cache/cache.module';
 import { ConfigModule } from '@nestjs/config';
 import { HealthModule } from './modules/health/health.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -16,6 +17,7 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     AppLoggerModule,
     PrismaModule,
+    AppCacheModule,
     HealthModule,
     AuthModule,
     UsersModule,
