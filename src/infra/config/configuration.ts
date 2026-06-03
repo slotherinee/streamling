@@ -3,6 +3,10 @@ export default () => ({
   NODE_ENV: process.env.NODE_ENV || 'development',
   DATABASE_URL: process.env.DATABASE_URL,
   REDIS_URL: process.env.REDIS_URL,
+  TMDB: {
+    API_KEY: process.env.TMDB_API_KEY,
+    BASE_URL: process.env.TMDB_BASE_URL || 'https://api.themoviedb.org/3',
+  },
   JWT: {
     ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
     REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,

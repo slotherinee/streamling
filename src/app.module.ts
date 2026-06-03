@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PrismaModule } from '@infra/database/prisma.module';
 import { AppCacheModule } from '@infra/cache/cache.module';
+import { TmdbModule } from '@infra/tmdb/tmdb.module';
 import { ConfigModule } from '@nestjs/config';
 import { HealthModule } from './modules/health/health.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -18,6 +19,7 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
     AppLoggerModule,
     PrismaModule,
     AppCacheModule,
+    TmdbModule,
     HealthModule,
     AuthModule,
     UsersModule,
