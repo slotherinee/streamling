@@ -1,21 +1,10 @@
-FROM node:22-alpine AS builder
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci
-
-COPY . .
-RUN npm run build
-
-# ---- Runner ----
-FROM node:22-alpine AS runner
+FROM node:22-alpine
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY --from=builder /app/.output ./.output
+COPY .output ./.output
 
 EXPOSE 3000
 
