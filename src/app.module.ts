@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import { ThrottlerModule } from '@nestjs/throttler';
 import configuration from '@infra/config/configuration';
 import { PrismaModule } from '@infra/database/prisma.module';
 import { AppLoggerModule } from '@infra/logger/logger.module';
@@ -17,6 +18,8 @@ import { TrendingModule } from '@modules/trending/trending.module';
 import { DiscoverModule } from '@modules/discover/discover.module';
 import { PeopleModule } from '@modules/people/people.module';
 import { CollectionsModule } from '@modules/collections/collections.module';
+import { WatchlistModule } from '@modules/watchlist/watchlist.module';
+import { ProgressModule } from '@modules/progress/progress.module';
 import { HttpExceptionFilter } from '@common/filters/http-exception.filter';
 import { TransformInterceptor } from '@common/interceptors/transform.interceptor';
 import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
@@ -24,6 +27,7 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
+    ThrottlerModule.forRoot([{ ttl: 60000, limit: 100 }]),
     AppLoggerModule,
     PrismaModule,
     AppCacheModule,
@@ -39,6 +43,8 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
     DiscoverModule,
     PeopleModule,
     CollectionsModule,
+    WatchlistModule,
+    ProgressModule,
   ],
   controllers: [],
   providers: [
