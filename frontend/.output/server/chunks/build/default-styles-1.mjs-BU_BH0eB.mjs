@@ -1,0 +1,4 @@
+const AppNavbar_vue_vue_type_style_index_0_scoped_b0d5bb07_lang = "@media(prefers-reduced-motion:no-preference){.logo-icon.logo-spin[data-v-b0d5bb07]{animation:logo-spin-b0d5bb07 .85s cubic-bezier(.4,0,.2,1) both}}@keyframes logo-spin-b0d5bb07{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(.82)}to{transform:rotate(1turn) scale(1)}}.search-expand-enter-active[data-v-b0d5bb07],.search-expand-leave-active[data-v-b0d5bb07]{transition:all .2s ease}.search-expand-enter-from[data-v-b0d5bb07],.search-expand-leave-to[data-v-b0d5bb07]{opacity:0;transform:scaleX(.5);transform-origin:right}.mobile-menu-enter-active[data-v-b0d5bb07],.mobile-menu-leave-active[data-v-b0d5bb07]{transition:all .25s ease}.mobile-menu-enter-from[data-v-b0d5bb07],.mobile-menu-leave-to[data-v-b0d5bb07]{opacity:0;transform:translateY(-8px)}";
+
+export { AppNavbar_vue_vue_type_style_index_0_scoped_b0d5bb07_lang as A };
+//# sourceMappingURL=default-styles-1.mjs-BU_BH0eB.mjs.map
