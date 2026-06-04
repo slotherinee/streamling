@@ -11,6 +11,7 @@ import { AuthModule } from '@modules/auth/auth.module';
 import { UsersModule } from '@modules/users/users.module';
 import { MoviesModule } from '@modules/movies/movies.module';
 import { TvModule } from '@modules/tv/tv.module';
+import { GenresModule } from '@modules/genres/genres.module';
 import { HttpExceptionFilter } from '@common/filters/http-exception.filter';
 import { TransformInterceptor } from '@common/interceptors/transform.interceptor';
 import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
@@ -27,6 +28,7 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
     UsersModule,
     MoviesModule,
     TvModule,
+    GenresModule,
   ],
   controllers: [],
   providers: [
