@@ -6,7 +6,7 @@ ENV NODE_ENV=production
 
 COPY .output ./.output
 
-RUN cd .output/server && npm install --production
+RUN cd .output/server && npm install --omit=dev --force
 
 EXPOSE 3000
 
