@@ -10,7 +10,7 @@ export class TmdbService {
   getMovie(id: number) {
     return this.http.get(
       `/movie/${id}`,
-      { append_to_response: 'credits,videos,similar,recommendations' },
+      { append_to_response: 'credits,videos,similar,recommendations,release_dates,keywords' },
       TTL.MOVIE_DETAIL,
     );
   }
@@ -23,7 +23,7 @@ export class TmdbService {
   getTv(id: number) {
     return this.http.get(
       `/tv/${id}`,
-      { append_to_response: 'credits,videos,similar,recommendations' },
+      { append_to_response: 'credits,videos,similar,recommendations,keywords' },
       TTL.TV_DETAIL,
     );
   }

@@ -4,6 +4,7 @@ export interface TvCard {
   poster: string | null;
   backdrop: string | null;
   rating: number;
+  voteCount: number;
   firstAirYear: string | null;
   overview: string;
 }
@@ -14,11 +15,18 @@ export interface TvShow extends TvCard {
   numberOfSeasons: number;
   numberOfEpisodes: number;
   status: string;
+  inProduction: boolean;
+  lastAirDate: string | null;
+  nextEpisode: { name: string; airDate: string; episodeNumber: number; seasonNumber: number } | null;
+  networks: { id: number; name: string; logo: string | null }[];
+  creators: { personId: number; name: string; avatar: string | null }[];
+  originCountry: string[];
+  keywords: string[];
   cast: {
-    id: number;
+    personId: number;
     name: string;
     character: string;
-    profile: string | null;
+    avatar: string | null;
   }[];
   trailerKey: string | null;
   similar: TvCard[];

@@ -36,10 +36,12 @@ export function normalizePerson(raw: any): Person {
 
   return {
     ...normalizePersonCard(raw),
-    biography: raw.biography ?? '',
-    birthday: raw.birthday ?? null,
-    deathday: raw.deathday ?? null,
+    biography:    raw.biography ?? '',
+    birthday:     raw.birthday ?? null,
+    deathday:     raw.deathday ?? null,
     placeOfBirth: raw.place_of_birth ?? null,
+    gender:       raw.gender ?? null,
+    alsoKnownAs:  raw.also_known_as ?? [],
     credits,
   };
 }

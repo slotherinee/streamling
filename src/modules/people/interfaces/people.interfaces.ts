@@ -21,5 +21,7 @@ export interface Person extends PersonCard {
   birthday: string | null;
   deathday: string | null;
   placeOfBirth: string | null;
+  gender: number | null;
+  alsoKnownAs: string[];
   credits: CreditItem[];
 }
