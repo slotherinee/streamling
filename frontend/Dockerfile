@@ -1,12 +1,21 @@
-FROM node:22-slim
+FROM node:22-slim AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+# ---- Runner ----
+FROM node:22-slim AS runner
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY .output ./.output
-
-RUN cd .output/server && npm install --omit=dev --force
+COPY --from=builder /app/.output ./.output
 
 EXPOSE 3000
 
