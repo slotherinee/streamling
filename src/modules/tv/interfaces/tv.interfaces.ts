@@ -29,6 +29,7 @@ export interface TvShow extends TvCard {
     avatar: string | null;
   }[];
   trailerKey: string | null;
+  seasonPosters: { seasonNumber: number; poster: string | null }[];
   similar: TvCard[];
   recommendations: TvCard[];
 }

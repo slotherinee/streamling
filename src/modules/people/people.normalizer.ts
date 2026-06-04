@@ -32,7 +32,7 @@ export function normalizePerson(raw: any): Person {
     })),
   ]
     .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
-    .slice(0, 30);
+    .slice(0, 200);
 
   return {
     ...normalizePersonCard(raw),

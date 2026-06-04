@@ -52,6 +52,9 @@ export function normalizeTv(raw: any): TvShow {
     originCountry: raw.origin_country ?? [],
     keywords:      raw.keywords?.results?.map((k: any) => k.name) ?? [],
     trailerKey:    trailer?.key ?? null,
+    seasonPosters: (raw.seasons ?? [])
+      .filter((s: any) => s.season_number > 0)
+      .map((s: any) => ({ seasonNumber: s.season_number, poster: img.poster(s.poster_path) })),
     cast: (raw.credits?.cast ?? []).slice(0, 20).map((c: any) => ({
       personId:  c.id,
       name:      c.name,
