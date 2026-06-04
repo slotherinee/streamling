@@ -9,6 +9,7 @@ import { TmdbModule } from '@infra/tmdb/tmdb.module';
 import { HealthModule } from '@modules/health/health.module';
 import { AuthModule } from '@modules/auth/auth.module';
 import { UsersModule } from '@modules/users/users.module';
+import { MoviesModule } from '@modules/movies/movies.module';
 import { HttpExceptionFilter } from '@common/filters/http-exception.filter';
 import { TransformInterceptor } from '@common/interceptors/transform.interceptor';
 import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
@@ -23,6 +24,7 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
     HealthModule,
     AuthModule,
     UsersModule,
+    MoviesModule,
   ],
   controllers: [],
   providers: [

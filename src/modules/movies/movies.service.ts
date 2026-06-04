@@ -1,0 +1,30 @@
+import { Injectable } from '@nestjs/common';
+import { TmdbService } from '@infra/tmdb/tmdb.service';
+import {
+  normalizeMovie,
+  normalizeMovieCard,
+  Movie,
+  MovieCard,
+} from './movies.normalizer';
+
+@Injectable()
+export class MoviesService {
+  constructor(private readonly tmdb: TmdbService) {}
+
+  async getMovie(id: number): Promise<Movie> {
+    const raw = await this.tmdb.getMovie(id);
+    return normalizeMovie(raw);
+  }
+
+  async getList(
+    list: 'popular' | 'top_rated' | 'now_playing' | 'upcoming',
+    page = 1,
+  ): Promise<{ page: number; totalPages: number; results: MovieCard[] }> {
+    const raw: any = await this.tmdb.getMovieList(list, page);
+    return {
+      page:       raw.page,
+      totalPages: raw.total_pages,
+      results:    raw.results.map(normalizeMovieCard),
+    };
+  }
+}
