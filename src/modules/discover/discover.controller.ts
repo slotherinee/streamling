@@ -9,12 +9,12 @@ export class DiscoverController {
   constructor(private readonly discover: DiscoverService) {}
 
   @Get('movies')
-  discoverMovies(@Query() query: DiscoverQueryDto) {
-    return this.discover.discoverMovies(query);
+  discoverMovies(@Query() query: DiscoverQueryDto, @Query('lang') lang = 'en') {
+    return this.discover.discoverMovies(query, lang);
   }
 
   @Get('tv')
-  discoverTv(@Query() query: DiscoverQueryDto) {
-    return this.discover.discoverTv(query);
+  discoverTv(@Query() query: DiscoverQueryDto, @Query('lang') lang = 'en') {
+    return this.discover.discoverTv(query, lang);
   }
 }

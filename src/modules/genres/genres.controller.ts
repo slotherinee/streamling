@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { Public } from '@common/decorators/public.decorator';
 import { GenresService } from './genres.service';
 
@@ -8,12 +8,12 @@ export class GenresController {
   constructor(private readonly genres: GenresService) {}
 
   @Get('movies')
-  getMovieGenres() {
-    return this.genres.getMovieGenres();
+  getMovieGenres(@Query('lang') lang = 'en') {
+    return this.genres.getMovieGenres(lang);
   }
 
   @Get('tv')
-  getTvGenres() {
-    return this.genres.getTvGenres();
+  getTvGenres(@Query('lang') lang = 'en') {
+    return this.genres.getTvGenres(lang);
   }
 }

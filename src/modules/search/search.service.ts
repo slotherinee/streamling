@@ -11,8 +11,9 @@ export class SearchService {
     query: string,
     type: SearchType = 'multi',
     page = 1,
+    lang = 'en',
   ): Promise<{ page: number; totalPages: number; results: SearchResult[] }> {
-    const raw: any = await this.tmdb.search(type, query, page);
+    const raw: any = await this.tmdb.search(type, query, page, lang);
 
     const results: SearchResult[] = raw.results
       .map((item: any) => ({

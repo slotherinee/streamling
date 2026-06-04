@@ -7,15 +7,16 @@ import type { Person, PersonCard } from './interfaces/people.interfaces';
 export class PeopleService {
   constructor(private readonly tmdb: TmdbService) {}
 
-  async getPerson(id: number): Promise<Person> {
-    const raw = await this.tmdb.getPerson(id);
+  async getPerson(id: number, lang = 'en'): Promise<Person> {
+    const raw = await this.tmdb.getPerson(id, lang);
     return normalizePerson(raw);
   }
 
   async getPopular(
     page = 1,
+    lang = 'en',
   ): Promise<{ page: number; totalPages: number; results: PersonCard[] }> {
-    const raw: any = await this.tmdb.getPopularPeople(page);
+    const raw: any = await this.tmdb.getPopularPeople(page, lang);
     return {
       page: raw.page,
       totalPages: raw.total_pages,

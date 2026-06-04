@@ -13,10 +13,11 @@ export class SearchController {
     @Query('q') q: string,
     @Query('type') type: SearchType = 'multi',
     @Query('page') page = '1',
+    @Query('lang') lang = 'en',
   ) {
     if (!q?.trim()) {
       throw new BadRequestException('Query param "q" is required');
     }
-    return this.search.search(q.trim(), type, Number(page));
+    return this.search.search(q.trim(), type, Number(page), lang);
   }
 }

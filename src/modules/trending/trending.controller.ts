@@ -15,7 +15,8 @@ export class TrendingController {
   getTrending(
     @Query('type') type: TrendingType = 'all',
     @Query('window') window: TimeWindow = 'day',
+    @Query('lang') lang = 'en',
   ) {
-    return this.trending.getTrending(type, window);
+    return this.trending.getTrending(type, window, lang);
   }
 }

@@ -11,6 +11,7 @@ export class UsersService {
     email: true,
     name: true,
     avatar: true,
+    language: true,
     createdAt: true,
   };
 

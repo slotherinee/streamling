@@ -13,9 +13,9 @@ export class DiscoverService {
     private readonly genres: GenresService,
   ) {}
 
-  async discoverMovies(dto: DiscoverQueryDto) {
-    const params = await this.buildParams(dto, 'movie');
-    const raw: any = await this.tmdb.discover('movie', params);
+  async discoverMovies(dto: DiscoverQueryDto, lang = 'en') {
+    const params = await this.buildParams(dto, 'movie', lang);
+    const raw: any = await this.tmdb.discover('movie', params, lang);
     return {
       page: raw.page,
       totalPages: raw.total_pages,
@@ -23,9 +23,9 @@ export class DiscoverService {
     };
   }
 
-  async discoverTv(dto: DiscoverQueryDto) {
-    const params = await this.buildParams(dto, 'tv');
-    const raw: any = await this.tmdb.discover('tv', params);
+  async discoverTv(dto: DiscoverQueryDto, lang = 'en') {
+    const params = await this.buildParams(dto, 'tv', lang);
+    const raw: any = await this.tmdb.discover('tv', params, lang);
     return {
       page: raw.page,
       totalPages: raw.total_pages,
@@ -36,11 +36,12 @@ export class DiscoverService {
   private async buildParams(
     dto: DiscoverQueryDto,
     type: 'movie' | 'tv',
+    lang = 'en',
   ): Promise<Record<string, unknown>> {
     const params: Record<string, unknown> = { page: dto.page ?? 1 };
 
     if (dto.genre) {
-      const map = await this.genres.getGenreMap(type);
+      const map = await this.genres.getGenreMap(type, lang);
       const genreId = map.get(dto.genre.toLowerCase());
       if (genreId) params['with_genres'] = genreId;
     }

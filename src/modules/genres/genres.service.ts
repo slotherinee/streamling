@@ -6,20 +6,20 @@ import { Genre } from './interfaces/genres.interfaces';
 export class GenresService {
   constructor(private readonly tmdb: TmdbService) {}
 
-  async getMovieGenres(): Promise<Genre[]> {
-    const raw: any = await this.tmdb.getGenres('movie');
+  async getMovieGenres(lang = 'en'): Promise<Genre[]> {
+    const raw: any = await this.tmdb.getGenres('movie', lang);
     return raw.genres as Genre[];
   }
 
-  async getTvGenres(): Promise<Genre[]> {
-    const raw: any = await this.tmdb.getGenres('tv');
+  async getTvGenres(lang = 'en'): Promise<Genre[]> {
+    const raw: any = await this.tmdb.getGenres('tv', lang);
     return raw.genres as Genre[];
   }
 
-  async getGenreMap(type: 'movie' | 'tv'): Promise<Map<string, number>> {
+  async getGenreMap(type: 'movie' | 'tv', lang = 'en'): Promise<Map<string, number>> {
     const genres = type === 'movie'
-      ? await this.getMovieGenres()
-      : await this.getTvGenres();
+      ? await this.getMovieGenres(lang)
+      : await this.getTvGenres(lang);
 
     return new Map(genres.map((g) => [g.name.toLowerCase(), g.id]));
   }

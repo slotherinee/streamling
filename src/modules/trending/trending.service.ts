@@ -14,8 +14,9 @@ export class TrendingService {
   async getTrending(
     type: TrendingType = 'all',
     timeWindow: TimeWindow = 'day',
+    lang = 'en',
   ): Promise<{ results: TrendingItem[] }> {
-    const raw: any = await this.tmdb.getTrending(type, timeWindow);
+    const raw: any = await this.tmdb.getTrending(type, timeWindow, lang);
     return {
       results: raw.results.map(normalizeTrendingItem),
     };

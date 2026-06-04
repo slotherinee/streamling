@@ -8,12 +8,12 @@ export class PeopleController {
   constructor(private readonly people: PeopleService) {}
 
   @Get('popular')
-  getPopular(@Query('page') page = '1') {
-    return this.people.getPopular(Number(page));
+  getPopular(@Query('page') page = '1', @Query('lang') lang = 'en') {
+    return this.people.getPopular(Number(page), lang);
   }
 
   @Get(':id')
-  getPerson(@Param('id', ParseIntPipe) id: number) {
-    return this.people.getPerson(id);
+  getPerson(@Param('id', ParseIntPipe) id: number, @Query('lang') lang = 'en') {
+    return this.people.getPerson(id, lang);
   }
 }
