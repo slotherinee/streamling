@@ -27,9 +27,7 @@ services:
       retries: 5
 
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/slotherinee/streamling-backend:latest
     env_file: .env.production
     ports:
       - "3002:4000"
@@ -43,9 +41,7 @@ services:
     restart: unless-stopped
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ghcr.io/slotherinee/streamling-frontend:latest
     env_file: .env.production
     environment:
       PORT: 3000

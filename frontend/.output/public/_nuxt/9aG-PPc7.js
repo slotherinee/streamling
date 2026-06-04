@@ -1,1 +1,0 @@
-import{bD as r,bH as f,bU as p,G as l}from"./BDeksj57.js";function g(n,e){const o=p(),s=r(),a=l(()=>{const t=typeof n=="function"?n():n;if(!t)return null;const c=s.user?.language??"en",i=t.includes("?")?"&":"?";return`${t}${i}lang=${c}`}),u=o.public.apiBase;return f(a,{baseURL:u,transform:t=>t&&typeof t=="object"&&"data"in t?t.data:t,...e},"$ye95mhJikQ")}export{g as u};
