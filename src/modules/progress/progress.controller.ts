@@ -8,6 +8,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { User } from '@common/decorators/current-user.decorator';
+import { PaginationDto } from '@common/dto/pagination.dto';
 import { ProgressService } from './progress.service';
 import { ProgressDto } from './dto/progress.dto';
 
@@ -16,8 +17,8 @@ export class ProgressController {
   constructor(private readonly progress: ProgressService) {}
 
   @Get()
-  getAll(@User('id') userId: string) {
-    return this.progress.getAll(userId);
+  getAll(@User('id') userId: string, @Query() pagination: PaginationDto) {
+    return this.progress.getAll(userId, pagination);
   }
 
   @Get(':tmdbId')

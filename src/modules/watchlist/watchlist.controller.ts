@@ -9,6 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { User } from '@common/decorators/current-user.decorator';
+import { PaginationDto } from '@common/dto/pagination.dto';
 import { WatchlistService } from './watchlist.service';
 import { WatchlistDto } from './dto/watchlist.dto';
 
@@ -17,8 +18,8 @@ export class WatchlistController {
   constructor(private readonly watchlist: WatchlistService) {}
 
   @Get()
-  getWatchlist(@User('id') userId: string) {
-    return this.watchlist.getWatchlist(userId);
+  getWatchlist(@User('id') userId: string, @Query() pagination: PaginationDto) {
+    return this.watchlist.getWatchlist(userId, pagination);
   }
 
   @Post()

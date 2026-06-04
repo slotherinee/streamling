@@ -1,16 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@infra/database/prisma.service';
+import { PaginationDto } from '@common/dto/pagination.dto';
 import { ProgressDto } from './dto/progress.dto';
 
 @Injectable()
 export class ProgressService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getAll(userId: string) {
-    return this.prisma.progress.findMany({
-      where:   { userId },
-      orderBy: { updatedAt: 'desc' },
-    });
+  async getAll(userId: string, { page = 1, limit = 20 }: PaginationDto) {
+    const skip = (page - 1) * limit;
+    const [items, total] = await Promise.all([
+      this.prisma.progress.findMany({
+        where:   { userId },
+        orderBy: { updatedAt: 'desc' },
+        skip,
+        take: limit,
+      }),
+      this.prisma.progress.count({ where: { userId } }),
+    ]);
+    return { items, total, page, limit, pages: Math.ceil(total / limit) };
   }
 
   async getOne(userId: string, tmdbId: number, mediaType: string) {

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@infra/database/prisma.service';
+import { PaginationDto } from '@common/dto/pagination.dto';
 import { WatchlistDto } from './dto/watchlist.dto';
 
 export interface ToggleResult {
@@ -12,11 +13,18 @@ export interface ToggleResult {
 export class WatchlistService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getWatchlist(userId: string) {
-    return this.prisma.watchlist.findMany({
-      where:   { userId },
-      orderBy: { addedAt: 'desc' },
-    });
+  async getWatchlist(userId: string, { page = 1, limit = 20 }: PaginationDto) {
+    const skip = (page - 1) * limit;
+    const [items, total] = await Promise.all([
+      this.prisma.watchlist.findMany({
+        where:   { userId },
+        orderBy: { addedAt: 'desc' },
+        skip,
+        take: limit,
+      }),
+      this.prisma.watchlist.count({ where: { userId } }),
+    ]);
+    return { items, total, page, limit, pages: Math.ceil(total / limit) };
   }
 
   async toggle(userId: string, dto: WatchlistDto): Promise<ToggleResult> {
