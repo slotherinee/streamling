@@ -1,0 +1,31 @@
+{
+  "name": "streamling-frontend",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --host",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@ant-design-vue/nuxt": "^1.4.6",
+    "@nuxt/image": "^2.0.0",
+    "@nuxtjs/i18n": "^10.4.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@peterbud/nuxt-query": "^1.8.0",
+    "@pinia/nuxt": "^0.11.3",
+    "nuxt": "^4.4.5",
+    "nuxt-swiper": "^2.0.1",
+    "pinia": "^3.0.4",
+    "tailwindcss-animate": "^1.0.7",
+    "v-gsap-nuxt": "^1.5.12",
+    "vue": "^3.5.34",
+    "vue-router": "^5.0.6",
+    "web-haptics": "^0.0.6"
+  },
+  "devDependencies": {
+    "shadcn-nuxt": "^2.7.3"
+  }
+}

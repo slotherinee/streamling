@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --primary: 215 100% 54%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 50%;
+    --accent: 215 80% 12%;
+    --accent-foreground: 215 100% 70%;
+    --destructive: 0 63% 50%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 215 100% 54%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  *:focus { outline: none; }
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--secondary)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
+
+/* ── Gradient overlays ── */
+.gradient-to-t-black {
+  background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0) 100%);
+}
+.gradient-to-r-black {
+  background: linear-gradient(to right, rgba(10,10,10,1) 0%, rgba(10,10,10,0.8) 40%, rgba(10,10,10,0.3) 70%, transparent 100%);
+}
+.gradient-card-hover {
+  background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 60%, transparent 100%);
+}
+
+/* ── Scrollbar hide ── */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── Ant Design overrides ── */
+.ant-btn,
+.ant-input,
+.ant-tag {
+  font-family: 'Inter', -apple-system, sans-serif !important;
+}
+
+.ant-btn-text {
+  background: transparent !important;
+}
+
+/* Fix button icon+text alignment */
+.ant-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px;
+}
+.ant-btn .ant-btn-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1;
+  margin-inline-end: 0 !important;
+}
+
+/* Badges — soft blue tint */
+.ant-tag {
+  background: rgba(22, 119, 255, 0.15) !important;
+  color: #69b1ff !important;
+  border: 1px solid rgba(22, 119, 255, 0.25) !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .page-enter-from,
+  .page-leave-to,
+  .layout-enter-from,
+  .layout-leave-to {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
