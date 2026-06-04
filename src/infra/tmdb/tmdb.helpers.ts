@@ -17,7 +17,8 @@ export const SORT_MAP: Record<string, string> = {
 };
 
 export const TTL = {
-  SHORT: 60 * 5, //  5 min  — trending, popular
-  MEDIUM: 60 * 60, //  1 hour — detail pages
-  LONG: 60 * 60 * 24, // 24 hour — genres, static
+  SHORT:        60 * 30,       // 30 min  — lists, popular, trending
+  TV_DETAIL:    60 * 60,       //  1 hour — tv detail (episodes/ratings update)
+  MOVIE_DETAIL: 60 * 60 * 24,  // 24 hour — movie detail (static)
+  LONG:         60 * 60 * 24,  // 24 hour — genres, collections, static
 };

@@ -11,7 +11,7 @@ export class TmdbService {
     return this.http.get(
       `/movie/${id}`,
       { append_to_response: 'credits,videos,similar,recommendations' },
-      TTL.MEDIUM,
+      TTL.MOVIE_DETAIL,
     );
   }
 
@@ -24,12 +24,12 @@ export class TmdbService {
     return this.http.get(
       `/tv/${id}`,
       { append_to_response: 'credits,videos,similar,recommendations' },
-      TTL.MEDIUM,
+      TTL.TV_DETAIL,
     );
   }
 
   getTvSeason(id: number, seasonNumber: number) {
-    return this.http.get(`/tv/${id}/season/${seasonNumber}`, {}, TTL.MEDIUM);
+    return this.http.get(`/tv/${id}/season/${seasonNumber}`, {}, TTL.TV_DETAIL);
   }
 
   getTvList(list: string, page = 1) {
