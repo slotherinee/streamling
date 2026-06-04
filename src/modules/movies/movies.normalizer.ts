@@ -1,30 +1,5 @@
 import { img } from '@infra/tmdb/tmdb.helpers';
-
-export interface MovieCard {
-  id: number;
-  title: string;
-  poster: string | null;
-  backdrop: string | null;
-  rating: number;
-  year: string | null;
-  overview: string;
-}
-
-export interface Movie extends MovieCard {
-  tagline: string;
-  runtime: number | null;
-  genres: { id: number; name: string }[];
-  cast: {
-    id: number;
-    name: string;
-    character: string;
-    profile: string | null;
-  }[];
-  trailerKey: string | null;
-  similar: MovieCard[];
-  recommendations: MovieCard[];
-  collectionId: number | null;
-}
+import type { MovieCard, Movie} from './interfaces/movies.interfaces';
 
 export function normalizeMovieCard(raw: any): MovieCard {
   return {

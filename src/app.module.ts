@@ -10,6 +10,7 @@ import { HealthModule } from '@modules/health/health.module';
 import { AuthModule } from '@modules/auth/auth.module';
 import { UsersModule } from '@modules/users/users.module';
 import { MoviesModule } from '@modules/movies/movies.module';
+import { TvModule } from '@modules/tv/tv.module';
 import { HttpExceptionFilter } from '@common/filters/http-exception.filter';
 import { TransformInterceptor } from '@common/interceptors/transform.interceptor';
 import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
@@ -25,6 +26,7 @@ import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
     AuthModule,
     UsersModule,
     MoviesModule,
+    TvModule,
   ],
   controllers: [],
   providers: [

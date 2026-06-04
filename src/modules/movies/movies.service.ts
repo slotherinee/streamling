@@ -3,9 +3,8 @@ import { TmdbService } from '@infra/tmdb/tmdb.service';
 import {
   normalizeMovie,
   normalizeMovieCard,
-  Movie,
-  MovieCard,
 } from './movies.normalizer';
+import type { MovieCard, Movie} from './interfaces/movies.interfaces';
 
 @Injectable()
 export class MoviesService {
