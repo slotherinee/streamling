@@ -41,7 +41,7 @@ export class TmdbService {
     return this.http.get(
       `/person/${id}`,
       { append_to_response: 'combined_credits,images' },
-      TTL.MEDIUM,
+      TTL.LONG,
     );
   }
 

@@ -25,6 +25,7 @@ export function normalizeMovie(raw: any): Movie {
     runtime:         raw.runtime ?? null,
     genres:          raw.genres ?? [],
     collectionId:    raw.belongs_to_collection?.id ?? null,
+    collectionName:  raw.belongs_to_collection?.name ?? null,
     trailerKey:      trailer?.key ?? null,
     cast:
       raw.credits?.cast?.slice(0, 20).map((c: any) => ({

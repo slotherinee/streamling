@@ -22,4 +22,5 @@ export interface Movie extends MovieCard {
   similar: MovieCard[];
   recommendations: MovieCard[];
   collectionId: number | null;
+  collectionName: string | null;
 }

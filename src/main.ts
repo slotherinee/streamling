@@ -10,6 +10,7 @@ async function bootstrap() {
   });
 
   app.useLogger(app.get(Logger));
+  app.enableCors({ origin: true, credentials: true });
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
