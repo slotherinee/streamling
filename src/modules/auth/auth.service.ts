@@ -61,8 +61,8 @@ export class AuthService {
     return this.issueTokens(stored.user.id, stored.user.email);
   }
 
-  async logout(token: string) {
-    await this.prisma.refreshToken.deleteMany({ where: { token } });
+  async logout(token: string | undefined) {
+    if (token) await this.prisma.refreshToken.deleteMany({ where: { token } });
   }
 
   private async issueTokens(userId: string, email: string) {
